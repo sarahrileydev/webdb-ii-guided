@@ -1,4 +1,15 @@
 const router = require('express').Router();
+const knex = require('knex');
+
+// this config object teaches knex how to find the database and what driver to use
+const knexConfig = {
+  client: 'sqlite3', //the yarn module we installed to use as database
+  useNullAsDefault: true, // needed when working with SQLite3
+  connection: {
+    //relative to the file folder
+    filename: './data/rolex.db3'
+  }
+}
 
 router.get('/', (req, res) => {
   // get the roles from the database
